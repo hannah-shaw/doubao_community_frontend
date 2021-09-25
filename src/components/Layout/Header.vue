@@ -5,10 +5,6 @@
       :fixed-top="true"
     >
       <template slot="brand">
-        <b-navbar-item tag="div">
-          <img :src="doubaoImg" alt="logo">
-        </b-navbar-item>
-
         <b-navbar-item
           class="is-hidden-desktop"
           tag="router-link"

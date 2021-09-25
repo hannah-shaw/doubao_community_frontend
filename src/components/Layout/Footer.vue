@@ -2,7 +2,7 @@
   <footer class="footer has-text-grey-light has-background-grey-darker">
     <div class="container">
       <div class="">
-        <span>简洁、实用、美观</span>
+        <span>应急救援信息平台</span>
 
         <span style="float: right">
           <router-link :to="{path:'/admin/login'}">
@@ -40,8 +40,8 @@ export default {
   },
   data() {
     return {
-      title: "© " + new Date().getFullYear() + ' 豆约翰',
-      author: '豆约翰',
+      title: "© " + new Date().getFullYear() + ' xiaohan',
+      author: 'xiaohan',
     };
   },
 };

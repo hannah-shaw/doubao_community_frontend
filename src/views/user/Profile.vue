@@ -4,13 +4,12 @@
       <div class="column is-one-quarter">
         <el-card shadow="never">
           <div slot="header" class="has-text-centered">
-            <el-avatar :size="64" :src="`https://cn.gravatar.com/avatar/${topicUser.id}?s=164&d=monsterid`" />
             <p class="mt-3">{{ topicUser.alias || topicUser.username }}</p>
           </div>
           <div>
-            <p class="content">积分：<code>{{ topicUser.score }}</code></p>
-            <p class="content">入驻：{{ dayjs(topicUser.createTime).format("YYYY/MM/DD HH:MM:ss") }}</p>
-            <p class="content">简介：{{ topicUser.bio }}</p>
+            <p class="content">发布信息数：<code>{{ topicUser.score }}</code></p>
+            <p class="content">注册时间：{{ dayjs(topicUser.createTime).format("YYYY/MM/DD HH:MM:ss") }}</p>
+            <!-- <p class="content">简介：{{ topicUser.bio }}</p> -->
           </div>
         </el-card>
       </div>

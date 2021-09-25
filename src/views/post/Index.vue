@@ -5,11 +5,6 @@
         <el-tabs v-model="activeName" @tab-click="handleClick">
           <el-tab-pane label="最新主题" name="latest">
             <article v-for="(item, index) in articleList" :key="index" class="media">
-              <div class="media-left">
-                <figure class="image is-48x48">
-                  <img :src="`https://cn.gravatar.com/avatar/${item.userId}?s=164&d=monsterid`" style="border-radius: 5px;">
-                </figure>
-              </div>
               <div class="media-content">
                 <div class="">
                   <p class="ellipsis is-ellipsis-1">
@@ -51,11 +46,6 @@
           </el-tab-pane>
           <el-tab-pane label="热门主题" name="hot">
             <article v-for="(item, index) in articleList" :key="index" class="media">
-              <div class="media-left">
-                <figure class="image is-48x48">
-                  <img :src="`https://cn.gravatar.com/avatar/${item.userId}?s=164&d=monsterid`" style="border-radius: 5px;">
-                </figure>
-              </div>
               <div class="media-content">
                 <div class="">
                   <p class="ellipsis is-ellipsis-1">
