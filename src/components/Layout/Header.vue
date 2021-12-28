@@ -20,6 +20,12 @@
         >
           🌐 主页
         </b-navbar-item>
+        <b-navbar-item
+          tag="router-link"
+          :to="{ path: '/map' }"
+        >
+          🌐 官方避难所地图
+        </b-navbar-item>
       </template>
 
       <template slot="end">

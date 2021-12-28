@@ -10,6 +10,12 @@ const routes = [
     component: () => import("@/views/Home"),
   },
   {
+    path: "/map",
+    name: "Map",
+    component: () => import("@/views/HelpMap"),
+    meta: { title: "福州市官方避难所地图" },
+  },
+  {
     path: "/register",
     name: "register",
     component: () => import("@/views/auth/Register"),
