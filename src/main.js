@@ -18,6 +18,8 @@ import relativeTime from 'dayjs/plugin/relativeTime';
 import 'dayjs/locale/zh-cn'
 const dayjs = require('dayjs');
 
+import BaiduMap from 'vue-baidu-map'
+
 // 相对时间插件
 dayjs.extend(relativeTime)
 
@@ -32,6 +34,12 @@ Vue.filter('date', (date) => {
 
 Vue.use(Buefy)
 Vue.use(ElementUI);
+
+
+Vue.use(BaiduMap, {
+  // ak 是在百度地图开发者平台申请的** 详见 http://lbsyun.baidu.com/apiconsole/key */
+  ak: 'm6hbNoEYyz8YrEzAL7oh3RL2RYE6gGKf'
+})
 
 Vue.config.productionTip = false
 

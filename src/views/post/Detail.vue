@@ -75,6 +75,9 @@
         v-if="flag"
         :topic-id="topic.id"
       />
+
+       <Map> </Map>
+       
     </div>
   </div>
 </template>
@@ -85,12 +88,13 @@ import { mapGetters } from 'vuex'
 import Author from '@/views/post/Author'
 import Recommend from '@/views/post/Recommend'
 import LvComments from '@/components/Comment/Comments'
+import Map from '@/components/map/map'
 import Vditor from 'vditor'
 import 'vditor/dist/index.css'
 
 export default {
   name: 'TopicDetail',
-  components: { Author, Recommend, LvComments },
+  components: { Author, Recommend, LvComments ,Map},
   computed: {
     ...mapGetters([
       'token','user'
