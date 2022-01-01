@@ -1,21 +1,29 @@
 <template>
-  <div class="columns">
-    <div class="column is-full">
-      <el-card class="box-card" shadow="never">
-        <div slot="header" class="clearfix">
-          <span><i class="fa fa fa-book"> 发布信息 </i></span>
-        </div>
-        <div>
-          <el-form
-            ref="ruleForm"
-            :model="ruleForm"
-            :rules="rules"
-            class="demo-ruleForm"
-          >
-            <el-form-item prop="title">
-              <el-input v-model="ruleForm.title" placeholder="输入信息标题" />
-            </el-form-item>
-<!--
+  <div>
+    <div class="mb-5" v-if="refresh">
+      <Header></Header>
+    </div>
+    <div class="container context">
+      <div class="columns">
+        <div class="column is-full">
+          <el-card class="box-card" shadow="never">
+            <div slot="header" class="clearfix">
+              <span><i class="fa fa fa-book"> 发布信息 </i></span>
+            </div>
+            <div>
+              <el-form
+                ref="ruleForm"
+                :model="ruleForm"
+                :rules="rules"
+                class="demo-ruleForm"
+              >
+                <el-form-item prop="title">
+                  <el-input
+                    v-model="ruleForm.title"
+                    placeholder="输入信息标题"
+                  />
+                </el-form-item>
+                <!--
             <el-input
               type="textarea"
               autosize
@@ -32,27 +40,33 @@
             >
             </el-input>
             -->
-            <!--Markdown-->
-            <div id="vditor" />
+                <!--Markdown-->
+                <div id="vditor" />
 
-            <b-taginput
-              v-model="ruleForm.tags"
-              class="my-3"
-              maxlength="15"
-              maxtags="3"
-              ellipsis
-              placeholder="请输入信息标签，限制为 15 个字符，推荐附带“求救”“物资”等标签"
-            />
+                <b-taginput
+                  v-model="ruleForm.tags"
+                  class="my-3"
+                  maxlength="15"
+                  maxtags="3"
+                  ellipsis
+                  placeholder="请输入信息标签，限制为 15 个字符，推荐附带“求救”“物资”等标签"
+                />
 
-            <el-form-item>
-              <el-button type="primary" @click="submitForm('ruleForm')"
-                >立即创建
-              </el-button>
-              <el-button @click="resetForm('ruleForm')">重置</el-button>
-            </el-form-item>
-          </el-form>
+                <el-form-item>
+                  <el-button type="primary" @click="submitForm('ruleForm')"
+                    >立即创建
+                  </el-button>
+                  <el-button @click="resetForm('ruleForm')">重置</el-button>
+                </el-form-item>
+              </el-form>
+            </div>
+          </el-card>
         </div>
-      </el-card>
+      </div>
+    </div>
+
+    <div>
+      <Footer></Footer>
     </div>
   </div>
 </template>
@@ -61,10 +75,12 @@
 import { post } from "@/api/post";
 import Vditor from "vditor";
 import "vditor/dist/index.css";
+import Header from "@/components/Layout/Header";
+import Footer from "@/components/Layout/Footer";
 
 export default {
   name: "TopicPost",
-
+  components: { Header, Footer },
   data() {
     return {
       contentEditor: {},
@@ -86,9 +102,11 @@ export default {
       },
       textarea1: "",
       textarea2: "",
+      refresh: true,
     };
   },
   mounted() {
+    this.refreshComp();
     this.contentEditor = new Vditor("vditor", {
       height: 500,
       placeholder:
@@ -152,6 +170,16 @@ export default {
       this.$refs[formName].resetFields();
       this.contentEditor.setValue("");
       this.ruleForm.tags = "";
+    },
+    //解决vue页头懒加载导致组件错位的问题
+    refreshComp() {
+      // 移除组件
+      this.refresh = false;
+      // 在组件移除后，重新渲染组件
+      // this.$nextTick可实现在DOM 状态更新后，执行传入的方法。
+      this.$nextTick(() => {
+        this.refresh = true;
+      });
     },
   },
 };

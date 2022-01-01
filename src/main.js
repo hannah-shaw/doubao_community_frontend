@@ -36,7 +36,7 @@ Vue.use(Buefy)
 Vue.use(ElementUI);
 
 
-Vue.use(BaiduMap, {
+Vue.use(BMap, {
   // ak 是在百度地图开发者平台申请的** 详见 http://lbsyun.baidu.com/apiconsole/key */
   ak: 'm6hbNoEYyz8YrEzAL7oh3RL2RYE6gGKf'
 })

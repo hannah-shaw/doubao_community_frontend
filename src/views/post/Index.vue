@@ -44,7 +44,7 @@
               <div class="media-right" />
             </article>
           </el-tab-pane>
-          <el-tab-pane label="热门信息" name="hot">
+          <el-tab-pane label="今日最新信息" name="hot">
             <article v-for="(item, index) in articleList" :key="index" class="media">
               <div class="media-content">
                 <div class="">

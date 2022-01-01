@@ -5,7 +5,7 @@
         <span>应急救援信息平台</span>
 
         <span style="float: right">
-          <router-link :to="{path:'/admin/login'}">
+          <router-link :to="{path:'/backlogin'}">
             管理员登录
           </router-link>
           |

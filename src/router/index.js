@@ -1,6 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 
+
 Vue.use(VueRouter);
 
 const routes = [
@@ -27,6 +28,13 @@ const routes = [
     path: "/login",
     component: () => import("@/views/auth/Login"),
     meta: { title: "登录" },
+  },
+   // 登录
+   {
+    name: "backlogin",
+    path: "/backlogin",
+    component: () => import("@/views/auth/backlogin"),
+    meta: { title: "管理员登录" },
   },
   // 发布
   {
@@ -79,6 +87,41 @@ const routes = [
     component: () => import('@/views/user/Setting'),
     meta: { title: '设置', requireAuth: true }
   },
+    // 测试
+    {
+      name: 'test',
+      path: '/test',
+      component: () => import('@/views/admin/blog/blog'),
+      meta: { title: '测试' }
+    },
+    //管理员后台
+    {
+      path: '/admin',
+      component: () => import('@/views/admin/layout'),
+      meta: { title: "首页" },
+      children: [
+        {
+          path: '',
+          component: () => import('@/views/admin/index/index'),
+          name: 'adminIndex',
+          meta: { title: "首页" }
+        },
+        //用户管理
+        {
+          path: 'account',
+          component: () => import('@/views/admin/account/account'),
+          name: 'accountLayout',
+          meta: { title: "用户管理" },
+        },
+        //文章管理
+        {
+          path: 'blog',
+          component: () => import('@/views/admin/blog/blog'),
+          name: 'blogLayout',
+          meta: { title: "文章管理" },
+        },
+      ]
+    },
   {
     path: "/404",
     name: "404",

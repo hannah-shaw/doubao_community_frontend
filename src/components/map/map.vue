@@ -24,7 +24,10 @@ export default {
       let data = [
         { x: 119.309157, y: 26.099683, name: '恒力金融中心' },
         { x: 119.321246, y: 26.096494, name: '恒宇国际' },
-        { x: 119.321896, y: 26.090404, name: '中国建筑材料工业地质勘查中心福建总队设计大楼' }
+        { x: 119.321896, y: 26.090404, name: '中国建筑材料工业地质勘查中心福建总队设计大楼' },
+        { x: 119.317775, y: 26.084276, name: '正祥中心' },
+        { x: 119.33448, y:  26.070296, name: '福州青少年活动中心' },
+
       ]
  
       data.forEach((e, i) => {
@@ -39,7 +42,7 @@ export default {
         });
         // 将data中的name加入地图中
         var label = new BMap.Label(e.name, {
-          offset: new BMap.Size(5, 2)
+          offset: new BMap.Size(15, 5)
         });
         markerFun(pointNumber, infoWindow, label)
       })
@@ -50,7 +53,7 @@ export default {
         markers.setLabel(label);  // 将data中的name添加到地图中
         // 标注的点击事件
         markers.addEventListener("click", function (event) {
-          map.openInfoWindow(infoWindows, points);//参数：窗口、点  根据点击的点出现对应的窗口
+          //map.openInfoWindow(infoWindows, points);//参数：窗口、点  根据点击的点出现对应的窗口
         });
       }
  

@@ -1,15 +1,5 @@
-<template style="height:100%">
-  <el-col :span="3" :class="'nav'">
-    <el-menu
-      :class="'nav'"
-      default-active="1"
-      class="el-menu-vertical-demo"
-      @open="handleOpen"
-      @close="handleClose"
-      background-color="#545c64"
-      text-color="#fff"
-      active-text-color="#ffd04b"
-    >
+<template>
+  <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect">
       <!-- 后台首页 -->
       <el-menu-item index="1" @click="jumpIndex()">
         <i class="el-icon-s-home"></i>
@@ -18,7 +8,7 @@
       <!-- 文章管理 -->
       <el-menu-item index="2" @click="jumpBlog()">
         <i class="el-icon-menu"></i>
-        <span slot="title">信息列表管理</span>
+        <span slot="title">信息管理</span>
       </el-menu-item>
       <!-- 用户管理 -->
       <el-menu-item index="3" @click="jumpAccount()">
@@ -41,8 +31,8 @@
           >发布通知</el-menu-item
         >
       </el-submenu>
-    </el-menu>
-  </el-col>
+</el-menu>
+
 </template>
 
 <style scoped>
