@@ -120,6 +120,20 @@ const routes = [
           name: 'blogLayout',
           meta: { title: "文章管理" },
         },
+        //通知管理
+        {
+          path: 'notice',
+          component: () => import('@/views/admin/notice/notice'),
+          name: 'noticeLayout',
+          meta: { title: "通知管理" },
+        },
+        //发布通知
+        {
+          path: 'createnotice',
+          component: () => import('@/views/admin/notice/createnotice'),
+          name: 'createnoticeLayout',
+          meta: { title: "发布通知" },
+        }
       ]
     },
   {
