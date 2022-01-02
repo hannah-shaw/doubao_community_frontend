@@ -6,3 +6,17 @@ export function getBillboard() {
     method: 'get'
   })
 }
+
+export function getAllBillboard() {
+  return request({
+    url: '/billboard/showall',
+    method: 'get'
+  })
+}
+
+export function getBillboardNum() {
+  return request({
+    url: '/billboard/getamount',
+    method: 'get'
+  })
+}

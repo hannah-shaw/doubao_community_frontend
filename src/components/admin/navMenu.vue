@@ -58,23 +58,18 @@ export default {
       console.log(key, keyPath);
     },
     jumpIndex() {
-      this.activeIndex = "1";
       this.$router.push("/admin");
     },
     jumpBlog() {
-      this.activeIndex = "2";
       this.$router.push("/admin/blog");
     },
     jumpAccount() {
-      this.activeIndex = "3";
       this.$router.push("/admin/account");
     },
     jumpNotice() {
-      this.activeIndex = "4-1";
       this.$router.push("/admin/notice");
     },
     jumpCreateNotice() {
-      this.activeIndex = "4-2";
       this.$router.push("/admin/createnotice");
     },
     getWidth() {},

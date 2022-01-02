@@ -28,7 +28,7 @@
         <el-table-column label="联系方式" prop="status"> </el-table-column>
       </el-table>
     </el-col>
-
+<!--
     <el-col :span="22" :class="'center'">
       <div class="block p-center pagination">
         <el-pagination
@@ -41,6 +41,7 @@
         </el-pagination>
       </div>
     </el-col>
+-->
   </div>
 </template>
 

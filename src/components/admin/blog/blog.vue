@@ -32,16 +32,15 @@
         <el-table-column label="文章标题" prop="blog"> </el-table-column>
         <el-table-column label="状态" prop="status"> </el-table-column>
         <el-table-column label="操作">
-          <template slot-scope="scope">
+          <template>
+            <!-- <template slot-scope="scope"> -->
             <el-button
               size="mini"
-              @click="handleDetail(scope.$index, scope.row)"
               >核实</el-button
             >
             <el-button
               size="mini"
               type="danger"
-              @click="handleDisabled(scope.$index, scope.row)"
               >删除</el-button
             >
 
@@ -49,7 +48,7 @@
         </el-table-column>
       </el-table>
     </el-col>
-
+<!--
     <el-col :span="22" :class="'center'">
       <div class="block p-center pagination">
         <el-pagination
@@ -62,6 +61,7 @@
         </el-pagination>
       </div>
     </el-col>
+    -->
   </div>
 </template>
 
@@ -147,39 +147,7 @@ export default {
     };
   },
   methods: {
-    handleDetail(index, row) {
-      console.log(index, row);
-    },
-    handleDisabled(index, row) {
-      console.log(index, row);
-    },
-    handleDelete(index, row) {
-      console.log(index, row);
-    },
-    convert() {},
-    handleCurrentChange: function (currentPage) {
-      console.log("handleCurrentChange()\n");
-      this.tableData = [];
-      this.currentPage = currentPage;
-      console.log("currentPage=" + currentPage + "\n");
-      var i;
-      for (
-        var i = (currentPage - 1) * 10, j = 0;
-        j < 10 &&
-        this.tableDataAll.length != 0 &&
-        i + j <= this.tableDataAll.length - 1;
-        j++, i++
-      ) {
-        console.log("i=" + i + "\n");
-        this.tableData.push(this.tableDataAll[i]);
-        console.log(
-          "this.tableDataAll[i]" + JSON.stringify(this.tableDataAll[i]) + "\n"
-        );
-      }
-      if (this.tableDataAll.length == 0) {
-        this.tableData = [];
-      }
-    },
+
   },
 };
 </script>
