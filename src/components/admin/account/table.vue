@@ -1,47 +1,33 @@
 <template>
   <div>
-
-
-    <el-col :span="22">
-      <el-table :data="tableData" style="width: 100%">
-        <el-table-column type="expand">
-          <template slot-scope="props">
-            <el-form label-position="left" inline class="demo-table-expand">
-              <el-form-item label="用户昵称">
-                <span>{{ props.row.nickname }}</span>
-              </el-form-item>
-              <el-form-item label="用户 ID">
-                <span>{{ props.row.id }}</span>
-              </el-form-item>
-              <el-form-item label="联系方式">
-                <span>{{ props.row.status }}</span>
-              </el-form-item>
-              <el-form-item label="最新信息">
-                <span>{{ props.row.blog }}</span>
-              </el-form-item>
-            </el-form>
-          </template>
-        </el-table-column>
-        <el-table-column label="用户昵称" prop="nickname"> </el-table-column>
-        <el-table-column label="用户 ID" prop="id"> </el-table-column>
-        <el-table-column label="最新发帖" prop="blog"> </el-table-column>
-        <el-table-column label="联系方式" prop="status"> </el-table-column>
-      </el-table>
-    </el-col>
-<!--
-    <el-col :span="22" :class="'center'">
-      <div class="block p-center pagination">
-        <el-pagination
-          layout="prev, pager, next"
-          :total="this.tableDataAll.length"
-          @current-change="handleCurrentChange"
-          :current-page="currentPage"
-          :current-size="pageSize"
-        >
-        </el-pagination>
-      </div>
-    </el-col>
--->
+    <div class="container context">
+      <el-col :span="22">
+        <el-table :data="tableData" style="width: 100%">
+          <el-table-column type="expand">
+            <template slot-scope="props">
+              <el-form label-position="left" inline class="demo-table-expand">
+                <el-form-item label="用户昵称">
+                  <span>{{ props.row.nickname }}</span>
+                </el-form-item>
+                <el-form-item label="用户 ID">
+                  <span>{{ props.row.id }}</span>
+                </el-form-item>
+                <el-form-item label="联系方式">
+                  <span>{{ props.row.status }}</span>
+                </el-form-item>
+                <el-form-item label="最新信息">
+                  <span>{{ props.row.blog }}</span>
+                </el-form-item>
+              </el-form>
+            </template>
+          </el-table-column>
+          <el-table-column label="用户昵称" prop="nickname"> </el-table-column>
+          <el-table-column label="用户 ID" prop="id"> </el-table-column>
+          <el-table-column label="最新发帖" prop="blog"> </el-table-column>
+          <el-table-column label="联系方式" prop="status"> </el-table-column>
+        </el-table>
+      </el-col>
+    </div>
   </div>
 </template>
 

@@ -24,7 +24,7 @@
           tag="router-link"
           :to="{ path: '/map' }"
         >
-          🌐 官方避难所地图
+          🗺️ 官方避难所地图
         </b-navbar-item>
       </template>
 
@@ -45,7 +45,7 @@
               <b-button
                 class="is-info"
                 @click="search()"
-              >检索
+              >🔍检索
               </b-button>
             </p>
           </b-field>
@@ -71,7 +71,7 @@
               tag="router-link"
               :to="{ path: '/register' }"
             >
-              注册
+              ®️注册
             </b-button>
             <b-button
               class="is-light"

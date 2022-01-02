@@ -1,11 +1,15 @@
 <template>
   <div>
+    <div class="container context">
+      <!--分页-->
+      <pagination
+        v-show="page.total > 0"
+        :total="page.total"
+        :page.sync="page.current"
+        :limit.sync="page.size"
+        @pagination="init"
+      />
 
-    <div :class="'notice'">
-      <el-badge :value="12" class="item">
-        <el-button size="small">待处理文章</el-button>
-      </el-badge>
-    </div>
 
     <el-col :span="22">
       <el-table :data="tableData" style="width: 100%">
@@ -13,23 +17,24 @@
           <template slot-scope="props">
             <el-form label-position="left" inline class="demo-table-expand">
               <el-form-item label="发表时间">
-                <span>{{ props.row.releaseTime }}</span>
+                <span>{{ dayjs(props.row.create_time).format("YYYY/MM/DD") }}</span>
               </el-form-item>
-              <el-form-item label="用户 ID">
-                <span>{{ props.row.id }}</span>
+              <el-form-item label="用户">
+                <span>{{ props.row.author }}</span>
               </el-form-item>
               <el-form-item label="状态">
                 <span>{{ props.row.status }}</span>
               </el-form-item>
-              <el-form-item label="内容">
-                <span>{{ props.row.blog }}</span>
+              <el-form-item label="详情">
+                  <router-link :to="{name:'post-detail',params:{id:props.row.id}}">
+                    <span class="is-size-6" style="color:#0066FF">{{props.row.title }}</span>
+                  </router-link>
               </el-form-item>
             </el-form>
           </template>
         </el-table-column>
-        <el-table-column label="发表时间" prop="releaseTime"> </el-table-column>
-        <el-table-column label="用户名" prop="id"> </el-table-column>
-        <el-table-column label="文章标题" prop="blog"> </el-table-column>
+        <el-table-column label="用户名" prop="author"> </el-table-column>
+        <el-table-column label="文章标题" prop="title"> </el-table-column>
         <el-table-column label="状态" prop="status"> </el-table-column>
         <el-table-column label="操作">
           <template>
@@ -48,20 +53,7 @@
         </el-table-column>
       </el-table>
     </el-col>
-<!--
-    <el-col :span="22" :class="'center'">
-      <div class="block p-center pagination">
-        <el-pagination
-          layout="prev, pager, next"
-          :total="this.tableDataAll.length"
-          @current-change="handleCurrentChange"
-          :current-page="currentPage"
-          :current-size="pageSize"
-        >
-        </el-pagination>
-      </div>
-    </el-col>
-    -->
+    </div>
   </div>
 </template>
 
@@ -110,44 +102,62 @@
 </style>
 
 <script>
+import { getList } from '@/api/post'
+import Pagination from '@/components/Pagination'
 export default {
+  components: { Pagination },
   data() {
     return {
       input: "",
       tableData: [
-        {
-          releaseTime: "2021-09-24",
-          id: "xiaohan",
-          status: "已核实",
-          blog: "晋安区泰禾广场地下一层停车场两人被困",
-        },
-        {
-          releaseTime: "2021-09-24",
-          id: "xiaohan",
-          status: "已核实",
-          blog: "晋安区泰禾广场地下一层停车场两人被困",
-        },
-        {
-          releaseTime: "2021-09-24",
-          id: "xiaohan",
-          status: "已核实",
-          blog: "晋安区泰禾广场地下一层停车场两人被困",
-        },
-        {
-          releaseTime: "2021-09-24",
-          id: "xiaohan",
-          status: "已核实",
-          blog: "晋安区泰禾广场地下一层停车场两人被困",
-        },
       ],
-      tableDataAll: [],
-      total: 0,
-      currentPage: 1,
-      pageSize: 10,
+      page: {
+        current: 1,
+        size: 10,
+        total: 0,
+        tab: 'latest'
+      }
     };
   },
-  methods: {
-
+  created() {
+    this.init()
   },
+  methods: {
+    init() {
+      getList(this.page.current, this.page.size,"latest").then((response) => {
+        const { data } = response
+        console.log(data)
+        this.page.current = data.current
+        this.page.total = data.total
+        this.page.size = data.size
+        for (var i = 0; i < data.records.length; i++) {
+              this.tableData.push({
+                id:"",
+                title: "",
+                author: "",
+                create_time: "",
+                status: "",
+                view: "",
+              });
+              // 帖子id
+              this.tableData[i].id = data.records[i].id;
+              // 发布时间
+              this.tableData[i].create_time = data.records[i].createTime;
+              // 标题
+              this.tableData[i].title = data.records[i].title;
+              // 作者
+              this.tableData[i].author = data.records[i].alias;
+              if(data.records[i].essence == false){
+                this.tableData[i].status = "未核实"
+              }
+              else{
+                this.tableData[i].status = "已核实"
+              }
+              // 浏览量
+              this.tableData[i].view = data.records[i].view;
+            }
+      })
+    },
+  }
 };
 </script>

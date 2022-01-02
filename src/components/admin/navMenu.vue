@@ -50,27 +50,34 @@
 
 <script>
 export default {
-  methods: {
-    handleOpen(key, keyPath) {
-      console.log(key, keyPath);
+  data() {
+      return {
+        activeIndex: '1',
+      };
     },
-    handleClose(key, keyPath) {
-      console.log(key, keyPath);
+  methods: {
+    handleSelect(key, keyPath) {
+        console.log(key, keyPath);
     },
     jumpIndex() {
       this.$router.push("/admin");
+      this.activeIndex = "1";
     },
     jumpBlog() {
       this.$router.push("/admin/blog");
+      this.activeIndex = "2";
     },
     jumpAccount() {
       this.$router.push("/admin/account");
+      this.activeIndex = "3";
     },
     jumpNotice() {
       this.$router.push("/admin/notice");
+      this.activeIndex = "4";
     },
     jumpCreateNotice() {
       this.$router.push("/admin/createnotice");
+      this.activeIndex = "4";
     },
     getWidth() {},
   },

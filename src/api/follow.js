@@ -8,7 +8,7 @@ export function follow(id) {
   }))
 }
 
-// 关注
+//取消关注
 export function unFollow(id) {
   return request(({
     url: `/relationship/unsubscribe/${id}`,

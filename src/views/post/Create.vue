@@ -49,7 +49,7 @@
                   maxlength="15"
                   maxtags="3"
                   ellipsis
-                  placeholder="请输入信息标签，限制为 15 个字符，推荐附带“求救”“物资”等标签"
+                  placeholder="请输入信息标签，限制为 15 个字符，推荐附带“人员求救”“物资求救”“物资提供”等标签"
                 />
 
                 <el-form-item>
@@ -110,7 +110,10 @@ export default {
     this.contentEditor = new Vditor("vditor", {
       height: 500,
       placeholder:
-        "此处为信息内容，请按需填写……例如，地址：情况：人员：联系方式：可用物资：等",
+        "此处为信息内容，请按需填写……\n"+
+        "例如，若是求救者填写\n【现地址】：\n【联系方式】：\n【灾情描述】：等\n"+
+        "例如，若是志愿者\n填写【提供物资名称及数量】：\n【联系方式】：\n【位置】：等\n"
+        ,
       theme: "classic",
       counter: {
         enable: true,

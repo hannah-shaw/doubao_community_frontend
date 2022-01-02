@@ -26,10 +26,6 @@
               />
             </el-form-item>
 
-            <p style="font-size:18px">内容</p>
-            <!--Markdown-->
-            <div id="vditor" />
-
             <div style="padding-top:20px">
               <el-form-item>
                 <el-button
@@ -75,74 +71,6 @@ export default {
         ]
       },
     }
-  },
-  mounted() {
-    this.contentEditor = new Vditor('vditor', {
-      height: 500,
-      placeholder: '此处为通知内容……',
-      theme: 'classic',
-      counter: {
-        enable: true,
-        type: 'markdown'
-      },
-      preview: {
-        delay: 0,
-        hljs: {
-          style: 'monokai',
-          lineNumber: true
-        }
-      },
-      tab: '\t',
-      typewriterMode: true,
-      toolbarConfig: {
-        pin: true
-      },
-      cache: {
-        enable: false
-      },
-      mode: 'sv',
-      toolbar: [
-        'emoji',
-        'headings',
-        'bold',
-        'italic',
-        'strike',
-        'link',
-        '|',
-        'list',
-        'ordered-list',
-        'check',
-        'outdent',
-        'indent',
-        '|',
-        'quote',
-        'line',
-        'code',
-        'inline-code',
-        'insert-before',
-        'insert-after',
-        '|',
-        // 'record',
-        'table',
-        '|',
-        'undo',
-        'redo',
-        '|',
-        'edit-mode',
-        // 'content-theme',
-        'code-theme',
-        'export',
-        {
-            name: 'more',
-            toolbar: [
-                'fullscreen',
-                'both',
-                'preview',
-                'info',
-                'help',
-            ],
-        }],
-    })
   },
   methods: {
 
