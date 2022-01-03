@@ -37,15 +37,24 @@
         <el-table-column label="文章标题" prop="title"> </el-table-column>
         <el-table-column label="状态" prop="status"> </el-table-column>
         <el-table-column label="操作">
-          <template>
-            <!-- <template slot-scope="scope"> -->
+          <template slot-scope="scope">
             <el-button
               size="mini"
+              @click="handlechecked(scope.row)"
+              :disabled= "scope.row.status2"
               >核实</el-button
             >
             <el-button
               size="mini"
+              type="warning"
+              @click="handledanger(scope.row)"
+              :disabled= "scope.row.danger"
+              >加急</el-button
+            >
+            <el-button
+              size="mini"
               type="danger"
+              @click="handledelete(scope.row)"
               >删除</el-button
             >
 
@@ -137,6 +146,8 @@ export default {
                 author: "",
                 create_time: "",
                 status: "",
+                status2: "",
+                danger:"",
                 view: "",
               });
               // 帖子id
@@ -147,16 +158,37 @@ export default {
               this.tableData[i].title = data.records[i].title;
               // 作者
               this.tableData[i].author = data.records[i].alias;
+              //状态
+              this.tableData[i].status2 = data.records[i].essence 
               if(data.records[i].essence == false){
                 this.tableData[i].status = "未核实"
               }
               else{
                 this.tableData[i].status = "已核实"
               }
+              //紧急
+              if(data.records[i].top == false){
+                this.tableData[i].danger = false
+              }
+              else{
+                this.tableData[i].danger = true
+              }
               // 浏览量
               this.tableData[i].view = data.records[i].view;
             }
       })
+    },
+    handlechecked(row) {
+      console.log(row.id);
+
+    },
+    handledanger(row) {
+      console.log(row.id);
+
+    },
+    handledelete(row) {
+      console.log(row.id);
+
     },
   }
 };

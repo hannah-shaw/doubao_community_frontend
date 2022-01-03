@@ -40,20 +40,9 @@
         </div>
 
         <div class="column">
-          <el-card class="box-card" shadow="hover">
-            <div slot="header" class="clearfix">
-              🤙 关于标签
-            </div>
-            <div>
-              <ul>
-                <li class="content">标签由平台用户发布使用</li>
-                <li class="content">系统每周会定时清理无用标签</li>
-              </ul>
-            </div>
-          </el-card>
           <el-card shadow="hover">
             <div slot="header">
-              🏷 热门标签
+              🏷 其他
             </div>
             <div>
               <ul>

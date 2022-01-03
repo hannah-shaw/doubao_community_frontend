@@ -98,41 +98,41 @@ const routes = [
     {
       path: '/admin',
       component: () => import('@/views/admin/layout'),
-      meta: { title: "首页" },
+      meta: { title: "首页" , requireAuth: true},
       children: [
         {
           path: '',
           component: () => import('@/views/admin/index/index'),
           name: 'adminIndex',
-          meta: { title: "首页" }
+          meta: { title: "首页" , requireAuth: true}
         },
         //用户管理
         {
           path: 'account',
           component: () => import('@/views/admin/account/account'),
           name: 'accountLayout',
-          meta: { title: "用户管理" },
+          meta: { title: "用户管理" , requireAuth: true},
         },
         //文章管理
         {
           path: 'blog',
           component: () => import('@/views/admin/blog/blog'),
           name: 'blogLayout',
-          meta: { title: "文章管理" },
+          meta: { title: "文章管理" , requireAuth: true},
         },
         //通知管理
         {
           path: 'notice',
           component: () => import('@/views/admin/notice/notice'),
           name: 'noticeLayout',
-          meta: { title: "通知管理" },
+          meta: { title: "通知管理" , requireAuth: true},
         },
         //发布通知
         {
           path: 'createnotice',
           component: () => import('@/views/admin/notice/createnotice'),
           name: 'createnoticeLayout',
-          meta: { title: "发布通知" },
+          meta: { title: "发布通知" , requireAuth: true},
         }
       ]
     },

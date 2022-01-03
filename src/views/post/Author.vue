@@ -6,6 +6,7 @@
             <span class="has-text-weight-bold"> 发布者信息</span>
           </div>
           <div class="has-text-centered">
+            <el-avatar :size="32" :src="`https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png`" />
             <p class="is-size-5 mb-5">
               <router-link :to="{ path: `/member/${user.username}/home` }">
                 {{ user.alias }}
