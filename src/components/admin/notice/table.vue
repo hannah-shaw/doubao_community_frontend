@@ -101,7 +101,6 @@ export default {
               // 内容
               this.tableData[i].content = data[i].content;
             }
-        console.log(data);
       })
     },
 

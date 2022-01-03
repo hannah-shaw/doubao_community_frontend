@@ -20,3 +20,11 @@ export function getBillboardNum() {
     method: 'get'
   })
 }
+
+export function createBillboard(content) {
+  return request({
+    url: '/billboard/create',
+    method: 'post',
+    data: content,
+  })
+}

@@ -6,24 +6,23 @@
           <el-table-column type="expand">
             <template slot-scope="props">
               <el-form label-position="left" inline class="demo-table-expand">
-                <el-form-item label="用户昵称">
+                <el-form-item label="用户">
                   <span>{{ props.row.nickname }}</span>
                 </el-form-item>
-                <el-form-item label="用户 ID">
+                <el-form-item label="ID">
                   <span>{{ props.row.id }}</span>
                 </el-form-item>
                 <el-form-item label="联系方式">
                   <span>{{ props.row.status }}</span>
                 </el-form-item>
-                <el-form-item label="最新信息">
-                  <span>{{ props.row.blog }}</span>
+                <el-form-item label="权限">
+                  <span>{{ props.row.role }}</span>
                 </el-form-item>
               </el-form>
             </template>
           </el-table-column>
           <el-table-column label="用户昵称" prop="nickname"> </el-table-column>
           <el-table-column label="用户 ID" prop="id"> </el-table-column>
-          <el-table-column label="最新发帖" prop="blog"> </el-table-column>
           <el-table-column label="联系方式" prop="status"> </el-table-column>
         </el-table>
       </el-col>
@@ -70,6 +69,7 @@
 </style>
 
 <script>
+import { getAccount } from '@/api/user'
 export default {
   data() {
     return {
@@ -94,36 +94,11 @@ export default {
       pageSize: 10,
     };
   },
+  created() {
+    this.init()
+  },
   methods: {
-    handleDetail(index, row) {
-      console.log(index, row);
-    },
-    handleDisabled(index, row) {
-      console.log(index, row);
-    },
-    convert() {},
-    handleCurrentChange: function (currentPage) {
-      console.log("handleCurrentChange()\n");
-      this.tableData = [];
-      this.currentPage = currentPage;
-      console.log("currentPage=" + currentPage + "\n");
-      var i;
-      for (
-        var i = (currentPage - 1) * 10, j = 0;
-        j < 10 &&
-        this.tableDataAll.length != 0 &&
-        i + j <= this.tableDataAll.length - 1;
-        j++, i++
-      ) {
-        console.log("i=" + i + "\n");
-        this.tableData.push(this.tableDataAll[i]);
-        console.log(
-          "this.tableDataAll[i]" + JSON.stringify(this.tableDataAll[i]) + "\n"
-        );
-      }
-      if (this.tableDataAll.length == 0) {
-        this.tableData = [];
-      }
+    init() {
     },
   },
 };

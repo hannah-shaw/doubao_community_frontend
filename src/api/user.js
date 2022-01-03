@@ -26,5 +26,12 @@ export function update(user) {
     data: user
   })
 }
+//所有用户信息
+export function getAccount() {
+  return request({
+    url: '/admin/userall',
+    method: 'get',
+  })
+}
 
 

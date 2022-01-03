@@ -19,10 +19,10 @@
             class="demo-ruleForm"
           >
             <p style="font-size:18px">标题</p>
-            <el-form-item prop="title">
+            <el-form-item prop="content">
               <el-input
-                v-model="ruleForm.title"
-                placeholder="输入通知名称"
+                v-model="ruleForm.content"
+                placeholder="输入通知"
               />
             </el-form-item>
 
@@ -30,9 +30,10 @@
               <el-form-item>
                 <el-button
                   type="primary"
+                  @click="submitForm('ruleForm')"
                 >立即发布
                 </el-button>
-                <el-button >重置</el-button>
+                <el-button @click="resetForm('ruleForm')">重置</el-button>
               </el-form-item>
             </div>
           </el-form>
@@ -45,27 +46,22 @@
 <script>
 
 import store from '@/store'
-
-import Vditor from 'vditor'
-import 'vditor/dist/index.css'
+import { createBillboard } from '@/api/billboard'
 
 export default {
   name: 'createnotice',
-
   data() {
     return {
-      contentEditor: {},
       ruleForm: {
-        title: '', // 标题
-        content: '' // 内容
+        content: '', 
       },
       rules: {
-        title: [
+        content: [
           { required: true, message: '请输入通知名称', trigger: 'blur' },
           {
             min: 1,
-            max: 25,
-            message: '长度在 1 到 25 个字符',
+            max: 50,
+            message: '长度在 1 到 50 个字符',
             trigger: 'blur'
           }
         ]
@@ -73,7 +69,27 @@ export default {
     }
   },
   methods: {
+    submitForm(formName) {
+      this.$refs[formName].validate((valid) => {
+        if (valid) {
+          createBillboard(this.ruleForm).then((response) => {
+            this.$message({
+              message: '已发布成功',
+              type: 'success'
+            });
+          });
 
+        } else {
+          this.$message.error('发布失败，请检验发布信息');
+          return false;
+        }
+      });
+    },
+    resetForm(formName) {
+      this.$refs[formName].resetFields();
+      this.contentEditor.setValue("");
+      this.ruleForm.tags = "";
+    },
   }
 }
 </script>

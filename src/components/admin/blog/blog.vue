@@ -112,6 +112,7 @@
 
 <script>
 import { getList } from '@/api/post'
+import { deleteTopic } from '@/api/post'
 import Pagination from '@/components/Pagination'
 export default {
   components: { Pagination },
@@ -188,7 +189,16 @@ export default {
     },
     handledelete(row) {
       console.log(row.id);
+      deleteTopic(row.id).then(value => {
+        const { code, message } = value
+        alert(message)
 
+        if (code === 200) {
+          setTimeout(() => {
+            this.init()
+          }, 500)
+        }
+      })
     },
   }
 };
