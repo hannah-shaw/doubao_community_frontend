@@ -2,14 +2,14 @@
   <el-card class="box-card">
     <div :class="'title'">
       <i class="el-icon-bell"></i>
-      公告栏
+      公告板
     </div>
     <div :class="'wrap'">
-      <p>*</p>
+      <p>***</p>
       <div :class="'divider'"></div>
-      <p>*</p>
+      <p>***</p>
       <div :class="'divider'"></div>
-      <p>*</p>
+      <p>***</p>
       <div :class="'divider'"></div>
     </div>
   </el-card>
@@ -25,17 +25,30 @@
 }
 
 .box-card {
-  width: 260px;
+  width: 300px;
   height: auto;
-  margin: 30px;
+  margin: 10px;
 }
-.wrap {
-  margin-top: 20px;
+
+.title {
+  margin: 10px;
+}
+.rowcard {
+  display: flex;
+  justify-content: center;
+}
+.item {
+  margin: 5px 10px;
+  border-radius: 3px;
+  background: #dddddd;
+  width: 240px;
+  height: 60px;
+  display: inline-block;
 }
 .divider {
   width: 100%;
   height: 1px;
   background: #dcdfe6;
   margin: 5px 0;
-}
+  }
 </style>

@@ -78,6 +78,9 @@ export default {
               type: 'success'
             });
           });
+          setTimeout(() => {
+              this.$router.push('/admin/notice');
+          }, 800);
 
         } else {
           this.$message.error('发布失败，请检验发布信息');

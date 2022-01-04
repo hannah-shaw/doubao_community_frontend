@@ -5,14 +5,13 @@
 <style lang="scss" scoped>
 #echarts {
   width: 830px;
-  height: 350px;
+  height: 300px;
   margin-top: 20px;
 }
 </style>
 
 <script>
 import * as echarts from "echarts";
-import $ from "jquery";
 export default {
   data() {
     return {};
@@ -28,57 +27,36 @@ export default {
 
       option = {
         title: {
-          text: " ",
+          text: "基于福州市用户发布位置信息统计",
+          left: "center",
         },
         tooltip: {
-          trigger: "axis",
+          trigger: "item",
         },
         legend: {
-          data: ["用户数量", "文章数量", "新增用户", "新增文章"],
-        },
-        grid: {
-          left: "3%",
-          right: "4%",
-          bottom: "3%",
-          containLabel: true,
-        },
-        toolbox: {
-          feature: {
-            saveAsImage: {},
-          },
-        },
-        xAxis: {
-          type: "category",
-          boundaryGap: false,
-          data: ["周一", "周二", "周三", "周四", "周五", "周六", "周日"],
-        },
-        yAxis: {
-          type: "value",
+          orient: "vertical",
+          left: "left",
         },
         series: [
           {
-            name: "用户数量",
-            type: "line",
-            stack: "总量",
-            data: [12, 13, 10, 13, 9, 23, 21],
-          },
-          {
-            name: "文章数量",
-            type: "line",
-            stack: "总量",
-            data: [22, 18, 19, 23, 29, 33, 31],
-          },
-          {
-            name: "新增用户",
-            type: "line",
-            stack: "总量",
-            data: [15, 23, 20, 15, 19, 33, 41],
-          },
-          {
-            name: "新增文章",
-            type: "line",
-            stack: "总量",
-            data: [32, 33, 30, 33, 39, 33, 32],
+            name: "Access From",
+            type: "pie",
+            radius: "50%",
+            data: [
+              { value: 1048, name: "鼓楼区" },
+              { value: 735, name: "晋安区" },
+              { value: 580, name: "台江区" },
+              { value: 484, name: "仓山区" },
+              { value: 300, name: "长乐区" },
+              { value: 300, name: "闽侯县" },
+            ],
+            emphasis: {
+              itemStyle: {
+                shadowBlur: 10,
+                shadowOffsetX: 0,
+                shadowColor: "rgba(0, 0, 0, 0.5)",
+              },
+            },
           },
         ],
       };

@@ -78,14 +78,20 @@ export default {
         {
           nickname: "肖寒",
           id: "xiaohan",
-          blog: "鼓楼区华润万象城三期S10#楼地下室急需物资",
           status: "13107675919",
+          role:"管理员"
         },
         {
           nickname: "沈梦瑶",
           id: "smy",
-          blog: "鼓楼区大儒世家10#楼1703两位老人被困",
           status: "18959378306",
+          role:"普通用户"
+        },
+        {
+          nickname: "王奕",
+          id: "wy",
+          status: "16723682763",
+          role:"普通用户"
         },
       ],
       tableDataAll: [],

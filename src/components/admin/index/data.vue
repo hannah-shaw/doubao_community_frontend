@@ -5,17 +5,22 @@
       数据统计
     </div>
     <div :class="'wrap'">
-      <div :class="'rowcard'">
-        <div :class="'item'"></div>
-        <div :class="'item'"></div>
-      </div>
-      <div :class="'rowcard'">
-        <div :class="'item'"></div>
-        <div :class="'item'"></div>
-      </div>
+      <v-echarts></v-echarts>
     </div>
   </el-card>
 </template>
+
+<script>
+import echarts from "@/components/admin/index/echarts";
+export default {
+  components: {
+    "v-echarts": echarts,
+  },
+  data() {
+    return {};
+  },
+};
+</script>
 
 <style scoped>
 .text {
@@ -27,26 +32,11 @@
 }
 
 .box-card {
-  width: 580px;
-  height: auto;
-  margin: 30px;
-}
-
-.title {
-  margin: 18px;
+  width: 750px;
+  height: 350px;
+  margin: 10px;
 }
 .wrap {
-}
-.rowcard {
-  display: flex;
-  justify-content: center;
-}
-.item {
-  margin: 5px 10px;
-  border-radius: 3px;
-  background: #dddddd;
-  width: 240px;
-  height: 60px;
-  display: inline-block;
+  margin-top: 10px;
 }
 </style>

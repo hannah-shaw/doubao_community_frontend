@@ -18,6 +18,8 @@ import relativeTime from 'dayjs/plugin/relativeTime';
 import 'dayjs/locale/zh-cn'
 const dayjs = require('dayjs');
 
+import echarts from "echarts"
+
 import BaiduMap from 'vue-baidu-map'
 
 // 相对时间插件
