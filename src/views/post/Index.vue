@@ -36,6 +36,12 @@
                         </router-link>
                       </span>
 
+                      <span
+                        class="tag is-hidden-mobile is-danger is-light mr-1 "
+                      >
+                        {{item.essence}}
+                      </span>
+
                       <span class="is-hidden-mobile">浏览:{{ item.view }}</span>
                     </div>
                   </div>
@@ -75,6 +81,12 @@
                         <router-link :to="{ name: 'tag', params: { name: tag.name } }">
                           {{ "#" + tag.name }}
                         </router-link>
+                      </span>
+
+                      <span
+                        class="tag is-hidden-mobile is-danger is-light mr-1 "
+                      >
+                        {{item.essence}}
                       </span>
 
                       <span class="is-hidden-mobile">浏览:{{ item.view }}</span>
@@ -126,10 +138,19 @@ export default {
     init(tab) {
       getList(this.page.current, this.page.size, tab).then((response) => {
         const { data } = response
+        console.log(data.records)
         this.page.current = data.current
         this.page.total = data.total
         this.page.size = data.size
         this.articleList = data.records
+        for (var i = 0; i < data.records.length; i++) {
+          if(data.records[i].essence == false){
+            this.articleList[i].essence = "未核实"
+          }
+          else{
+            this.articleList[i].essence = "已核实"
+          }
+        }
       })
     },
     handleClick(tab) {

@@ -6,3 +6,12 @@ export function getPosition() {
     method: 'get'
   })
 }
+
+// 发布
+export function create(pos) {
+  return request({
+    url: '/position/create',
+    method: 'post',
+    data: pos
+  })
+}

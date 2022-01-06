@@ -36,6 +36,11 @@
         >发布通知</el-menu-item
       >
     </el-submenu>
+    <!-- 发布位置 -->
+    <el-menu-item index="5" @click="jumpPosition()">
+      <i class="el-icon-menu"></i>
+      <span slot="title">发布避难所位置</span>
+    </el-menu-item>
   </el-menu>
 </template>
 
@@ -78,6 +83,10 @@ export default {
     jumpCreateNotice() {
       this.$router.push("/admin/createnotice");
       this.activeIndex = "4";
+    },
+    jumpPosition() {
+      this.$router.push("/admin/addposition");
+      this.activeIndex = "5";
     },
     getWidth() {},
   },

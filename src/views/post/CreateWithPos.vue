@@ -23,6 +23,10 @@
                     placeholder="输入信息标题"
                   />
                 </el-form-item>
+
+                <div class = "smap">
+                    <Map></Map>
+                </div>
                 <!--Markdown-->
                 <div id="vditor" />
 
@@ -40,7 +44,6 @@
                     >立即创建
                   </el-button>
                   <el-button @click="resetForm('ruleForm')">重置</el-button>
-                  <el-button @click="createTest()">带有地理位置的测试</el-button>
                 </el-form-item>
               </el-form>
             </div>
@@ -61,10 +64,13 @@ import Vditor from "vditor";
 import "vditor/dist/index.css";
 import Header from "@/components/Layout/Header";
 import Footer from "@/components/Layout/Footer";
+import { pca, pcaa } from 'area-data'; // v5 or higher
+import 'vue-area-linkage/dist/index.css'; // v2 or higher
+import Map from '@/components/map/searchMap'
 
 export default {
   name: "TopicPost",
-  components: { Header, Footer },
+  components: { Header, Footer,Map},
   data() {
     return {
       contentEditor: {},
@@ -123,7 +129,6 @@ export default {
   },
   methods: {
     submitForm(formName) {
-      console.log(this.selected)
       this.$refs[formName].validate((valid) => {
         if (valid) {
           if (
@@ -159,10 +164,6 @@ export default {
       this.contentEditor.setValue("");
       this.ruleForm.tags = "";
     },
-    createTest() {
-      this.$router.push('/test')
-    },
-
     //解决vue页头懒加载导致组件错位的问题
     refreshComp() {
       // 移除组件
@@ -178,4 +179,8 @@ export default {
 </script>
 
 <style scoped>
+  .smap{
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
 </style>

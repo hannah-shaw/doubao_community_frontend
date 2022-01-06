@@ -91,7 +91,7 @@ const routes = [
     {
       name: 'test',
       path: '/test',
-      component: () => import('@/views/admin/blog/blog'),
+      component: () => import('@/views/post/CreateWithPos'),
       meta: { title: '测试' }
     },
     //管理员后台
@@ -133,6 +133,13 @@ const routes = [
           component: () => import('@/views/admin/notice/createnotice'),
           name: 'createnoticeLayout',
           meta: { title: "发布通知" , requireAuth: true},
+        },
+        //新增避难所位置
+        {
+          path: 'addposition',
+          component: () => import('@/views/admin/position/addpos'),
+          name: 'addposLayout',
+          meta: { title: "新增避难所位置" , requireAuth: true},
         }
       ]
     },

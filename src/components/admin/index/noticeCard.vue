@@ -5,11 +5,13 @@
       公告板
     </div>
     <div :class="'wrap'">
-      <p>***</p>
+      <p>👩‍💻各位尊敬的管理员：</p>
       <div :class="'divider'"></div>
-      <p>***</p>
+      <p> ❗请随时注意紧急情况的发生</p>
       <div :class="'divider'"></div>
-      <p>***</p>
+      <p> ❗及时核实用户发布信息</p>
+      <div :class="'divider'"></div>
+      <p> ❗及时发布已核实可用避难所位置</p>
       <div :class="'divider'"></div>
     </div>
   </el-card>

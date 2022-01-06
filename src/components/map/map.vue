@@ -19,7 +19,7 @@ export default {
       this.$nextTick(() => {
         var map = new BMap.Map("allmap"); //初始化map, 绑定id=allmap
         var point = new BMap.Point(121.48789949, 31.24916171); // 初始化point, 给定一个默认x,y值
-        map.centerAndZoom(point, 10); // 将point点放入map中，展示在页面中心展示，10=缩放程度
+        map.centerAndZoom(point, 13); // 将point点放入map中，展示在页面中心展示，10=缩放程度
         map.enableScrollWheelZoom(); // 开启滚动鼠标滑轮
 
         var pdata = [];
