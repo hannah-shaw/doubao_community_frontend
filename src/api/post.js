@@ -54,3 +54,16 @@ export function deleteTopic(id) {
   })
 }
 
+export function check(id) {
+  return request({
+    url: `/post/check/${id}`,
+    method: 'post'
+  })
+}
+
+export function top(id) {
+  return request({
+    url: `/post/top/${id}`,
+    method: 'post'
+  })
+}

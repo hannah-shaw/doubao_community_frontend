@@ -39,6 +39,9 @@
                         {{ "#" + tag.name }}
                       </b-tag>
                     </router-link>
+                    <span class="tag is-danger is-light mr-1">
+                      {{ topic.essence }}
+                    </span>
                   </b-taglist>
                 </p>
               </div>
@@ -117,6 +120,7 @@ export default {
     async fetchTopic() {
       getTopic(this.$route.params.id).then((response) => {
         const { data } = response;
+        console.log(data);
         document.title = data.topic.title;
 
         this.topic = data.topic;
@@ -125,6 +129,11 @@ export default {
         // this.comments = data.comments
         this.renderMarkdown(this.topic.content);
         this.flag = true;
+        if (this.topic.essence == false) {
+          this.topic.essence = "未核实";
+        } else {
+          this.topic.essence = "已核实";
+        }
       });
     },
     handleDelete(id) {

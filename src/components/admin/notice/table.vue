@@ -22,6 +22,7 @@
               <el-button
                 size="mini"
                 type="danger"
+                plain
                 >删除</el-button
               >
             </template>

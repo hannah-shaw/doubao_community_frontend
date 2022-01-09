@@ -29,8 +29,8 @@ const routes = [
     component: () => import("@/views/auth/Login"),
     meta: { title: "登录" },
   },
-   // 登录
-   {
+  // 登录
+  {
     name: "backlogin",
     path: "/backlogin",
     component: () => import("@/views/auth/backlogin"),
@@ -87,62 +87,69 @@ const routes = [
     component: () => import('@/views/user/Setting'),
     meta: { title: '设置', requireAuth: true }
   },
-    // 测试
-    {
-      name: 'test',
-      path: '/test',
-      component: () => import('@/views/post/CreateWithPos'),
-      meta: { title: '测试' }
-    },
-    //管理员后台
-    {
-      path: '/admin',
-      component: () => import('@/views/admin/layout'),
-      meta: { title: "首页" , requireAuth: true},
-      children: [
-        {
-          path: '',
-          component: () => import('@/views/admin/index/index'),
-          name: 'adminIndex',
-          meta: { title: "首页" , requireAuth: true}
-        },
-        //用户管理
-        {
-          path: 'account',
-          component: () => import('@/views/admin/account/account'),
-          name: 'accountLayout',
-          meta: { title: "用户管理" , requireAuth: true},
-        },
-        //文章管理
-        {
-          path: 'blog',
-          component: () => import('@/views/admin/blog/blog'),
-          name: 'blogLayout',
-          meta: { title: "文章管理" , requireAuth: true},
-        },
-        //通知管理
-        {
-          path: 'notice',
-          component: () => import('@/views/admin/notice/notice'),
-          name: 'noticeLayout',
-          meta: { title: "通知管理" , requireAuth: true},
-        },
-        //发布通知
-        {
-          path: 'createnotice',
-          component: () => import('@/views/admin/notice/createnotice'),
-          name: 'createnoticeLayout',
-          meta: { title: "发布通知" , requireAuth: true},
-        },
-        //新增避难所位置
-        {
-          path: 'addposition',
-          component: () => import('@/views/admin/position/addpos'),
-          name: 'addposLayout',
-          meta: { title: "新增避难所位置" , requireAuth: true},
-        }
-      ]
-    },
+  // 测试
+  {
+    name: 'test',
+    path: '/test',
+    component: () => import('@/views/post/CreateWithPos'),
+    meta: { title: '测试' }
+  },
+  // 路径规划测试测试
+  {
+    name: 'plan',
+    path: '/plan',
+    component: () => import('@/components/map/planmap'),
+    meta: { title: '路径规划' }
+  },
+  //管理员后台
+  {
+    path: '/admin',
+    component: () => import('@/views/admin/layout'),
+    meta: { title: "首页", requireAuth: true },
+    children: [
+      {
+        path: '',
+        component: () => import('@/views/admin/index/index'),
+        name: 'adminIndex',
+        meta: { title: "首页", requireAuth: true }
+      },
+      //用户管理
+      {
+        path: 'account',
+        component: () => import('@/views/admin/account/account'),
+        name: 'accountLayout',
+        meta: { title: "用户管理", requireAuth: true },
+      },
+      //文章管理
+      {
+        path: 'blog',
+        component: () => import('@/views/admin/blog/blog'),
+        name: 'blogLayout',
+        meta: { title: "文章管理", requireAuth: true },
+      },
+      //通知管理
+      {
+        path: 'notice',
+        component: () => import('@/views/admin/notice/notice'),
+        name: 'noticeLayout',
+        meta: { title: "通知管理", requireAuth: true },
+      },
+      //发布通知
+      {
+        path: 'createnotice',
+        component: () => import('@/views/admin/notice/createnotice'),
+        name: 'createnoticeLayout',
+        meta: { title: "发布通知", requireAuth: true },
+      },
+      //新增避难所位置
+      {
+        path: 'addposition',
+        component: () => import('@/views/admin/position/addpos'),
+        name: 'addposLayout',
+        meta: { title: "新增避难所位置", requireAuth: true },
+      }
+    ]
+  },
   {
     path: "/404",
     name: "404",

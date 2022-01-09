@@ -39,7 +39,7 @@
     <!-- 发布位置 -->
     <el-menu-item index="5" @click="jumpPosition()">
       <i class="el-icon-menu"></i>
-      <span slot="title">发布避难所位置</span>
+      <span slot="title">发布避难所或物资位置</span>
     </el-menu-item>
   </el-menu>
 </template>

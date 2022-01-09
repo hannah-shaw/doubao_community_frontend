@@ -1,7 +1,7 @@
 <template>
   <div>
     <div>
-      <p>新增避难所位置</p>
+      <p>新增避难所或物资位置</p>
     </div>
     <v-add></v-add>
   </div>

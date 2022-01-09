@@ -10,7 +10,7 @@
         @pagination="init"
       />
 
-
+  <div v-if="refresh"> 
     <el-col :span="22">
       <el-table :data="tableData" style="width: 100%">
         <el-table-column type="expand">
@@ -46,15 +46,17 @@
             >
             <el-button
               size="mini"
-              type="warning"
+              type="success"
               @click="handledanger(scope.row)"
               :disabled= "scope.row.danger"
-              >加急</el-button
+              plain
+              >确认获救</el-button
             >
             <el-button
               size="mini"
               type="danger"
               @click="handledelete(scope.row)"
+              plain
               >删除</el-button
             >
 
@@ -62,6 +64,7 @@
         </el-table-column>
       </el-table>
     </el-col>
+  </div>
     </div>
   </div>
 </template>
@@ -111,8 +114,7 @@
 </style>
 
 <script>
-import { getList } from '@/api/post'
-import { deleteTopic } from '@/api/post'
+import { getList,check,deleteTopic,top } from '@/api/post'
 import Pagination from '@/components/Pagination'
 export default {
   components: { Pagination },
@@ -126,7 +128,8 @@ export default {
         size: 10,
         total: 0,
         tab: 'latest'
-      }
+      },
+      refresh: true,
     };
   },
   created() {
@@ -181,24 +184,65 @@ export default {
     },
     handlechecked(row) {
       console.log(row.id);
+      check(row.id).then(value => {
+        const { code, message } = value
+        this.$message({
+          message: message
+        });
+
+        if(code === 200){
+          setTimeout(() => {
+            Object.assign(this.$data,this.$options.data())
+            this.refreshComp();
+            this.init()
+          }, 500)
+        }
+      })
 
     },
     handledanger(row) {
       console.log(row.id);
+      top(row.id).then(value => {
+        const { code, message } = value
+        this.$message({
+          message: message
+        });
 
+        if(code === 200){
+          setTimeout(() => {
+            Object.assign(this.$data,this.$options.data())
+            this.refreshComp();
+            this.init()
+          }, 500)
+        }
+      })
     },
     handledelete(row) {
       console.log(row.id);
       deleteTopic(row.id).then(value => {
         const { code, message } = value
-        alert(message)
+        this.$message({
+          message: message
+        });
 
         if (code === 200) {
           setTimeout(() => {
+            Object.assign(this.$data,this.$options.data())
+            this.refreshComp();
             this.init()
           }, 500)
         }
       })
+    },
+    //解决vue懒加载导致组件错位的问题
+    refreshComp() {
+      // 移除组件
+      this.refresh = false;
+      // 在组件移除后，重新渲染组件
+      // this.$nextTick可实现在DOM 状态更新后，执行传入的方法。
+      this.$nextTick(() => {
+        this.refresh = true;
+      });
     },
   }
 };
